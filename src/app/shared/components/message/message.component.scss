@@ -1,0 +1,24 @@
+.alert {
+  animation-duration: 5s;
+  animation-name: slide-in;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  top: 65px;
+  transform: translateX(100%);
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -1,0 +1,49 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-create__name, user-create__name-error, user-create__job, user-create__job-error, user-create__btn-create
+-->
+<div class="card w-100 flex">
+  <h2 class="text-center">Create user</h2>
+  <section class="layout-column form w-50 mx-auto">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="layout-column mb-15">
+        <label for="user-create__name" class="mb-3">Name</label>
+        <input
+          id="user-create__name"
+          class="mb-3"
+          type="text"
+          placeholder="Enter name"
+          formControlName="name"
+        />
+        <span
+          id="user-create__name-error"
+          class="form-hint error-text"
+          *ngIf="isControlHasError('name')"
+        >
+          {{ getErrorMessage('name') }}
+        </span>
+      </div>
+      <div class="layout-column mb-15">
+        <label for="user-create__job" class="mb-3">Job</label>
+        <input
+          id="user-create__job"
+          class="mb-3"
+          type="text"
+          placeholder="Enter job"
+          formControlName="job"
+        />
+        <span
+          id="user-create__job-error"
+          class="form-hint error-text"
+          *ngIf="isControlHasError('job')"
+        >
+          {{ getErrorMessage('job') }}
+        </span>
+      </div>
+      <div class="layout-row mb-15">
+        <button id="user-create__btn-create" type="submit" class="small" [disabled]="formGroup.invalid">Create</button>
+      </div>
+    </form>
+  </section>
+</div>
+

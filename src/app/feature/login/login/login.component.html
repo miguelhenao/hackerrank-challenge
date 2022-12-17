@@ -1,0 +1,61 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = login__email, login__password, login__password-error, login__email-error, login__btn-login
+-->
+
+<div class="container flex justify-content-center align-items-center">
+  <div class="card pa-30 w-auto">
+    <h2 class="text-center">Login</h2>
+    <section class="layout-column">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="layout-column mb-15">
+          <label htmlFor="login__email" class="mb-3"> Email </label>
+          <input
+            id="login__email"
+            type="email"
+            placeholder="Enter email"
+            formControlName="email"
+            [ngClass]="{ error: isControlHasError('email') }"
+            class="mb-3"
+          />
+          <span
+            class="form-hint error-text"
+            id="login__email-error"
+            *ngIf="isControlHasError('email')"
+          >
+            {{ getErrorMessage('email') }}
+          </span>
+        </div>
+        <div class="layout-column mb-15">
+          <label htmlFor="login__password" class="mb-3"> Password </label>
+          <input
+            id="login__password"
+            type="password"
+            placeholder="Enter password"
+            formControlName="password"
+            [ngClass]="{ error: isControlHasError('password') }"
+            class="mb-3"
+          />
+          <span
+            class="form-hint error-text"
+            id="login__password-error"
+            *ngIf="isControlHasError('password')"
+          >
+            {{ getErrorMessage('password') }}
+          </span>
+        </div>
+        <div class="layout-row justify-content-end">
+          <button
+            id="login__btn-login"
+            type="submit"
+            class="primary"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </section>
+    <div class="alert filled error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+</div>

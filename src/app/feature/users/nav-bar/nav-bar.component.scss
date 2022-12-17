@@ -1,0 +1,8 @@
+.router-link-active {
+  color: var(--link-color);
+}
+
+.link:hover {
+  color: var(--link-color-hover);
+  cursor: pointer;
+}

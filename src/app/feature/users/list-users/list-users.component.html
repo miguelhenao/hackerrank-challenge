@@ -1,0 +1,56 @@
+<!--
+  Recuerde conservar los id, no deben ser modificados
+  ids = user-list__filter, user-list__table, user-list__table-item-[index], user-list__table-item-[index]-avatar, user-list__table-item-[index]-first_name, user-list__table-item-[index]-email, user-list__table-item-[index]-btn-delete
+  Remplazar [index] por el valor ejemplo "user-list__table-item-0"
+-->
+
+<h3 class="text-center mt-50">List of users</h3>
+<div class="w-50 mx-auto input-search">
+  <input
+    id="user-list__filter"
+    type="search"
+    name="filter"
+    [(ngModel)]="filter"
+    class="mb-3 w-100"
+    placeholder="Filter by name"
+  />
+</div>
+<div class="user-list-table card w-75 mx-auto">
+  <table id="user-list__table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns">{{ col }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | filterUserByName: filter; index as i" [id]="generateId(i)">
+        <td class="avatar">
+          <img [id]="generateId(i, 'avatar')" [src]="user.avatar" alt="Avatar" class="img-responsive" />
+        </td>
+        <td [id]="generateId(i, 'first_name')">{{ user.first_name }}</td>
+        <td [id]="generateId(i, 'email')">{{ user.email }}</td>
+        <td>
+          <button
+            [id]="generateId(i, 'btn-delete')"
+            class="icon-only danger"
+            (click)="deleteUser(user.id)"
+          >
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tr>
+      <td class="block" colspan="4">
+        <div class="flex justify-content-center">
+          <button class="icon-only secondary" (click)="backPage()" [disabled]="isFirstPage">
+            <i class="material-icons">arrow_back_ios</i>
+          </button>
+          <button class="icon-only secondary" (click)="forwardPage()" [disabled]="isLastPage">
+            <i class="material-icons">arrow_forward_ios</i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

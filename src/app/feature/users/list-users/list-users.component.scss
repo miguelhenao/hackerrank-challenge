@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+  .input-search {
+    min-width: 300px;
+  }
+
+  .user-list-table {
+    min-width: 350px;
+    overflow: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .input-search {
+    max-width: 500px;
+  }
+
+  .avatar {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.img-responsive {
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+}
